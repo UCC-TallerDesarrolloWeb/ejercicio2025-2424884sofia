@@ -1,0 +1,30 @@
+
+        div {
+            border: 1px solid black;
+            margin: 20px;
+            padding: 10px;
+            background-color: rgb(196, 193, 189);
+            border-radius: 15px;
+            box-shadow: 10px 12px #da97cb;
+        }
+
+        #icono-usuario {
+            width: 100px;
+            float: left;
+            border-radius: 50%;
+        }
+
+        body {
+            text-align: center;
+            font-family: "montserrat", cursive;
+            background: linear-gradient(to right, rgb(54, 23, 115));
+        }
+
+        .titulo {
+            text-shadow: 10px 5px #ffff;
+        }
+        .pos-fix{
+            position: fixed;
+            top: 0;
+        }
+    

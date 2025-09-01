@@ -6,6 +6,7 @@
     <title>Ejercicio Columnas</title>
 </head>
 
+
 <style>
     #tituloPrincipal {
         /* de ID */
@@ -39,6 +40,12 @@
     a:active {
         font-weight: bold;
     }
+
+    article {
+        column-count: 2;
+        column-gap: 100px;
+
+    }
 </style>
 
 <body>
@@ -51,7 +58,7 @@
         <h3 class="tituloNoticia">CordoBici</h3>
         Publicado el 07/03/2018 en Agropecuarias y Ambiente
         <article>
-            <div>
+            <div class="columna1">
                 <p>
                     Un intercambio académico inspiró a Joaquín, Nicolás, Guido y Facundo para elegir el tema de su
                     trabajo final.
@@ -91,7 +98,7 @@
                     de la tesis.
                 </p>
             </div>
-            <div class="grid-item">
+            <div class="columna2">
                 <p>
                     Gracias a una profunda investigación comercial, sumada a una simulación realizada por un programa
                     llamado
@@ -133,6 +140,7 @@
                     sustentabilidad de los ciudadanos de nuestra ciudad.
                 </p>
             </div>
+
         </article>
     </section>
 

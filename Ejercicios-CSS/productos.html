@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Catalogo de Productos</title>
+    <link href="catalogo.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body class="grid-container">
+    <header class="item1">Catalogo de Productos</header>
+    <nav class="item2">
+        <a href="productos.html">Catalogo de Productos</a>
+        <a href="">Carrito de Compras</a>
+    </nav>
+    <aside class="item3">
+        <form name="filter">
+            <fieldset>
+                <legend>Busqueda</legend>
+                <label for="search">Buscar: </label>
+                <input type="text" id="search" name="search" placeholder="palabra...">
+            </fieldset>
+            <fieldset>
+                <legend>Precios</legend>
+                <p>
+                    <label for="price min">Minimo</label>
+                    <input type="number" id="price-min" name="price-min" value="0" min="0">
+                </p>
+                <p>
+                    <label for="price max">Maximo</label>
+                    <input type="number" id="price-max" name="price-max" value="50" min="50">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Tipo de Producto</legend>
+                <p>
+                    <input type="checkbox" id="protectores" name="tipo" value="protectores">
+                    <label for="protectores">Protectores</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="entrenamiento" name="tipo" value="entrenamiento">
+                    <label for="entrenamiento">Entrenamiento</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="dobok" name="tipo" value="dobok">
+                    <label for="dobok">Dobok</label>
+                </p>
+            </fieldset>
+        </form>
+    </aside>
+    <main class="item4">
+        <div>
+            <img src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp" alt="Cabezal Cerrado" />
+            <h3>Cabezal Cerrado</h3>
+        </div>
+        <div>
+            <img src="../Ejercicios-JavaScript/images/escudo-potencia.webp" alt="Escudo de Potencia" />
+            <h3>Escudo de Potencia</h3>
+        </div>
+        <div>
+            <img src="../Ejercicios-JavaScript/images/foco-con-dedos.webp" alt="Foco con Dedos" />
+            <h3>Foco con Dedos</h3>
+        </div>
+        <div>
+            <img src="../Ejercicios-JavaScript/images/protectores-manos.webp" alt="Protectores de Manos" />
+            <h3>Portectores de Manos</h3>
+        </div>
+        <div>
+            <img src="../Ejercicios-JavaScript/images/dobok.webp" alt="Dobok" />
+            <h3>Dobok</h3>
+        </div>
+        <div>
+            <img src="../Ejercicios-JavaScript/images/protectores-pie.webp" alt="Protectores de Pie" />
+            <h3>Portectores de Pie</h3>
+        </div>
+    </main>
+</body>
+
+</html>
