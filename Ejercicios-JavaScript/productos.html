@@ -4,13 +4,14 @@
 <head>
     <title>Catalogo de Productos</title>
     <link href="catalogo.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="tienda.js"></script>
 </head>
 
-<body class="grid-container">
+<body class="grid-container" onload="mostrarCatalogo()">
     <header class="item1">Catalogo de Productos</header>
     <nav class="item2">
         <a href="productos.html">Catalogo de Productos</a>
-        <a href="">Carrito de Compras</a>
+        <a href="carrito.html">Carrito de Compras</a>
     </nav>
     <aside class="item3">
         <form name="filter">
@@ -47,32 +48,15 @@
             </fieldset>
         </form>
     </aside>
-    <main class="item4">
-        <div>
-            <img src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp" alt="Cabezal Cerrado" />
-            <h3>Cabezal Cerrado</h3>
-        </div>
-        <div>
-            <img src="../Ejercicios-JavaScript/images/escudo-potencia.webp" alt="Escudo de Potencia" />
-            <h3>Escudo de Potencia</h3>
-        </div>
-        <div>
-            <img src="../Ejercicios-JavaScript/images/foco-con-dedos.webp" alt="Foco con Dedos" />
-            <h3>Foco con Dedos</h3>
-        </div>
-        <div>
-            <img src="../Ejercicios-JavaScript/images/protectores-manos.webp" alt="Protectores de Manos" />
-            <h3>Portectores de Manos</h3>
-        </div>
-        <div>
-            <img src="../Ejercicios-JavaScript/images/dobok.webp" alt="Dobok" />
-            <h3>Dobok</h3>
-        </div>
-        <div>
-            <img src="../Ejercicios-JavaScript/images/protectores-pie.webp" alt="Protectores de Pie" />
-            <h3>Portectores de Pie</h3>
-        </div>
-    </main>
+
+    <dialog id="detalle">
+        <h2> Detalle del Producto</h2>
+        <h3 id="titulo-prod">Cabezal Cerrado</h3>
+        <p id="descr-prod">Este producto viene del talle 1 al 3.</p>
+        <button type="button" onclick="cerrarModal()"> Cerrar </button>
+    </dialog>
+    <main class="item4" id="catalogo"> </main>
+    <footer class="item5">Info de Contacto</footer>
 </body>
 
 </html>
