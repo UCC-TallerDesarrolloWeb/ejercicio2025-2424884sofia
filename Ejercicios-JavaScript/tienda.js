@@ -73,15 +73,15 @@ let cerrarModal = () => {
   document.getElementById("detalle").style.display = "none";
 };
 
-let mostrarCatalogo = () => {
+let mostrarCatalogo = (prod = productos) => {
   let contenido = "";
 
-  productos.forEach((prod, id) => {
+  prod.forEach((prod, id) => {
     contenido += `
     <div class="card">
       <img src="images/${prod.imagen}" alt="${prod.nombre}" />
       <h3>${prod.nombre}</h3>
-      <p>${prod.precio}</p>            
+      <p>${formatPrice(prod.precio)}</p>            
       <button type="button" onclick="mostrarDetalle(${id})"> Ver Detalle </button>
       <button type="button" onclick="agregarAlCarrito(${id})"> Agregar al Carrito </button>
   </div>`;
@@ -101,33 +101,57 @@ let agregarAlCarrito = (id) => {
    carritoList.push(id);
    console.log(carritoList);
    localStorage.setItem("carrito", JSON.stringify(carritoList));
+   contarProductos();
  }  
-
+ 
 let cargarCarrito = () => {
-  let carritoList = localStorage.getItem("carrito");
+  const raw = localStorage.getItem("carrito");
+  if (!raw || raw === "undefined") {
+    document.getElementById("carrito").innerHTML = "<div>Su carrito está vacío.</div>";
+    return;
+  }
+  const carrito = JSON.parse(raw);
+
+  const listProd = [];
+  const listCant = [];
   let contenido = "";
+  let total = 0;
 
-  if(!carritoList || carritoList === "undefined") {
-    contenido = "<div>Su carrito esta vacio.</div>"
-   } else {
-    carritoList = JSON.parse(carritoList);
+  carrito.forEach((num) => {
+    if (!listProd.includes(num)) {
+      listProd.push(num);
+      listCant.push(1);
+    } else {
+      const inx = listProd.indexOf(num);
+      listCant[inx] += 1;
+    }
+  });
 
-    carritoList.forEach((num, id) => {
-     contenido += `<div>
-             <h3>${productos[num].nombre}</h3>
-             <p>${productos[num].precio} </p>
-             <button type="button" onClick="eliminarProducto(${id})">Eliminar Producto</button>;
-   </div>`;
-   });
-   }
+  listProd.forEach((num, id) => {
+    const element = productos[num];
+    const idxToRemove = carrito.indexOf(num);
 
-   contenido += `<button type="button" onClick="vaciarCarrito()">Vaciar Carrito</button> `
-   document.getElementById("carrito").innerHTML = contenido;
-   
- }
+    contenido += `
+      <div>
+        <h3>${element.nombre}</h3>
+        <p>${element.precio}</p>
+        <p>Cantidad: ${listCant[id]}</p>
+        <button type="button" onclick="eliminarProducto(${idxToRemove})">Eliminar Producto</button>
+      </div>
+    `;
+    total += element.precio * listCant[id];
+  });
+
+  contenido += `Total: ${total}`;
+  contenido += `<button type="button" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
+  document.getElementById("carrito").innerHTML = contenido;
+};
+
+
 
  let vaciarCarrito = () => {
   localStorage.removeItem("carrito");
+  contarProductos();
   window.location.reload();
  }
 
@@ -142,7 +166,99 @@ let cargarCarrito = () => {
   } else {
     localStorage.removeItem("carrito");
   }
-
-   window.location.reload();
+  contarProductos();
+  window.location.reload();
  }
 
+ let filtrarProductos = () => {
+  let searchWord = document.getElementById("search").value;
+  let min = document.getElementById("price-min").value;
+  let max = document.getElementById("price-max").value;
+  let marca = document.getElementById("marca").value;
+  let prot = document.getElementById("protectores").checked;
+  let entr = document.getElementById("entrenamiento").checked;
+  let dob = document.getElementById("dobok").checked;
+
+  let newLista = productos;
+  if (searchWord) {
+    newLista = newLista.filter((prod) => 
+    prod.nombre.toLowerCase().includes(searchWord.toLowerCase()) || 
+    prod.description.toLowerCase().includes(searchWord.toLowerCase())
+    );
+  }
+
+  if(min) {
+    newLista = newLista.filter((prod) => prod.precio >= min)
+  }
+
+  if(max) {
+    newLista = newLista.filter((prod) => prod.precio < max)
+  }
+
+  if (marca !== "Todas") {
+    newLista = newLista.filter((prod) => prod.marca === marca)
+  }
+
+  let category = [];
+  prot ? category.push("Protectores") : "";
+  entr ? category.push("Entrenamiento") : "";
+  dob ? category.push("Dobok") : "";
+
+  if(category.length>0){
+    newLista = newLista.filter((prod) => category.includes(prod.categoria))
+  }
+
+  mostrarCatalogo(newLista);
+ }
+
+let formatPrice = (price) => {
+  return new Intl.NumberFormat("es-AR", {
+    currency: "ARS", 
+    style: "currency",
+  }).format(price);
+
+};
+
+let contarProductos = () => {
+  const getCart = JSON.parse(localStorage.getItem("carrito"));
+
+  if(getCart !== null) {
+    document.getElementById("cant-prod").innerText = getCart.length;
+
+  };
+}
+
+let orderCatalogo = () => {
+  const opt = document.getElementById("order").value;
+  let newProducts;
+
+  switch(opt){
+    case "menor":
+      newProducts = productos.sort((a, b) => a.precio - b.precio);
+      break;
+    case "mayor":
+      newProducts = productos.sort((a, b) => b.precio - a.precio);
+      break;
+    case "a-z":
+      newProducts = productos.sort((a, b) => {
+        if(a.nombre.toUpperCase() < b.nombre.toUpperCase()) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      break;
+    case "z-a":
+      newProducts = productos.sort((a, b) => {
+        if(a.nombre.toUpperCase() > b.nombre.toUpperCase()) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      break;
+    default:
+      newProducts = productos.sort((a, b) => a.precio - b.precio);
+    }
+    mostrarCatalogo(newProducts);
+};

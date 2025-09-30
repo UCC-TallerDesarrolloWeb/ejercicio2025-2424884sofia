@@ -5,13 +5,15 @@
     <title>Carrito de Compras</title>
     <link href="catalogo.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="tienda.js"></script>
+    <meta charset="UTF-8">
 </head>
 
-<body class="grid-container" onload="cargarCarrito()">
+<body class="grid-container" onload="cargarCarrito();contarProductos()">
     <header class="item1">Carrito</header>
     <nav class="item2">
-        <a href="productos.html">Catalogo de Productos</a>
+        <a href="productos.html">Catálogo de Productos</a>
         <a href="">Carrito de Compras</a>
+        <div id="cant-prod">0</div>
     </nav>
     <main class="item4" id="carrito"> </main>
     <footer class="item5">Info de Contacto</footer>
