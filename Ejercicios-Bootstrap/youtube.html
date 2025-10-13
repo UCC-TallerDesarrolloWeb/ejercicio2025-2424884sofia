@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <style>
+        .action-buttons {
+            height: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .card {
+            transform: scale(1);
+            transition: transform 0.1s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        .card:hover .action-buttons {
+            height: auto;
+            opacity: 1;
+        }
+
+        .card_img {
+            width: 35rem;
+        }
+
+        .col-2 img {
+            width: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5 d-flex gap-1">
+        <div class="card text-white text-bg-dark border-0">
+            <a href="#" class="text-light text-decoration-none">
+                <img src="/Ejercicios-CSS/imagenes/satoshito89_01.png" alt="video 1" class="card-img-top" />
+            </a>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2">
+                        <a href="#">
+                            <img src="../Ejercicios-CSS/imagenes/icono_usuario.jpg" alt="" class="rounded-circle"
+                                width="48px" />
+                        </a>
+                    </div>
+
+                    <div class="col-10">
+                        <div class="card-title">
+                            <a href="#" class="text-light text-decoration-none">
+                                Titulo del video
+                            </a>
+                        </div>
+                        <div class="card-title">
+                            <a href="" class="text-light text-decoration-none opacity-50">
+                                Descripcion del video
+                            </a>
+                        </div>
+                        <div class="text-light opacity-50">230 Vistas - 1 Día</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row action-buttons p-2 overflow-hidden">
+                <div class="col-6 p-1">
+                    <a href="#" class="btn text-secondary w-100 fw-bold d-block fs-6">
+                        Ver más tarde
+                    </a>
+                </div>
+                <div class="col-6 p-1">
+                    <a href="#" class="btn text-secondary w-100 fw-bold d-block fs-6">
+                        Agregar a la lista
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card text-white text-bg-dark border-0">
+            <a href="#" class="text-light text-decoration-none">
+                <img src="/Ejercicios-CSS/imagenes/satoshito89_01.png" alt="video 1" class="card-img-top" />
+            </a>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2">
+                        <a href="#">
+                            <img src="../Ejercicios-CSS/imagenes/icono_usuario.jpg" alt="" class="rounded-circle"
+                                width="48px" />
+                        </a>
+                    </div>
+
+                    <div class="col-10">
+                        <div class="card-title">
+                            <a href="#" class="text-light text-decoration-none">
+                                Titulo del video
+                            </a>
+                        </div>
+                        <div class="card-title">
+                            <a href="" class="text-light text-decoration-none opacity-50">
+                                Descripcion del video
+                            </a>
+                        </div>
+                        <div class="text-light opacity-50">230 Vistas - 1 Día</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row action-buttons p-2 overflow-hidden">
+                <div class="col-6 p-1">
+                    <a href="#" class="btn text-secondary w-100 fw-bold d-block fs-6">
+                        Ver más tarde
+                    </a>
+                </div>
+                <div class="col-6 p-1">
+                    <a href="#" class="btn text-secondary w-100 fw-bold d-block fs-6">
+                        Agregar a la lista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
