@@ -3,18 +3,19 @@ import "./styles/login.scss"
 import { useNavigate } from "react-router-dom"
 
 const Login = () => {
-    const [usuario, setUsuario] = useState("");
+    const [username, setUsuario] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handlerLogin = async (e) => {
         e.preventDefault();
 
-        if(usuario==="admin" && password==="admin"){
+        if(username==="admin" && password==="admin"){
             console.log("Login OK");
+            localStorage.setItem("isLoggedIn", "true");
             navigate("/actividades");
         }else{
-            console.log("Login ERROR");
+            console.log("Login ERROR"); 
         }
     }
 
@@ -27,9 +28,10 @@ const Login = () => {
                     id="usuario"
                     type="text"
                     placeholder="Usuario"
-                    value={usuario}
+                    value={username}
                     onChange={(e) => setUsuario(e.target.value)}
-                    required />
+                    required 
+                />
                 <label htmlFor="password">Password:</label>
                 <input
                     id="password"
@@ -37,7 +39,8 @@ const Login = () => {
                     placeholder="Contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required />
+                    required 
+                />
                 <button type="submit">Ingresar</button>
             </form>
         </div>
